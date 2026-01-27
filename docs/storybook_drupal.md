@@ -27,7 +27,7 @@ const settings = {
   argTypes: { /* control definitions */ },
   parameters: {
     controls: {
-      include: ['prop1', 'prop2'],  // Whitelist editable props
+      include: ['prop1', 'prop2'],  // Allowlist editable props
     },
   },
 };
@@ -71,7 +71,8 @@ decorators: [withGlobalWrapper],
 
 ## Story Variations
 
-### Spread Pattern
+Use CSF 3 and reuse stories with the spread operator. See https://storybook.js.org/docs/api/csf/index#spreadable-story-objects
+for documentation.
 
 ```javascript
 const Primary = {
@@ -120,7 +121,7 @@ const Default = {
 };
 ```
 
-### Conditional Icon Rendering
+### Conditional Rendering
 
 ```javascript
 const Primary = {
@@ -199,36 +200,10 @@ import ContentPlaceholder from '../../01-global/content-placeholder/content-plac
 
 File: `source/00-config/storybook.global-data.yml`
 
-Available keys:
-- `storybook` (boolean)
-- `site_name`, `site_logo`, `site_slogan`
-- `title`, `page_title`, `section`
-- `url`, `summary`, `content` (WYSIWYG HTML)
-- `author_name`, `is_published`
-- `img_thumbnail`, `img_hero` (objects with src, alt, height, width)
-- `year`, `month`, `weekday`, `day`, `hour`, `minute`, `seconds` (date parts)
-- `icons` (array of icon names)
-- `modifier_classes`, `image_path`
-
 ## YAML Data Files
 
-Minimal example:
-
-```yaml
-text: 'Button'
-is_button_tag: true
-url: '#0'
-```
-
-Nested example:
-
-```yaml
-accordion_data:
-  - title: 'First Heading'
-    is_open: true
-    content: |
-      <p>Content here</p>
-```
+YAML data files provide most default args for Storybook stories. All files MUST
+be valid YAML.
 
 ## Twig Extensions
 
@@ -243,18 +218,6 @@ Available Twig functions/filters in Storybook (registered in `.storybook/preview
 | `create_attribute()` | Create attribute string from object |
 
 Drupal filters from `@forumone/twig-drupal-filters` are also registered.
-
-## Key Files
-
-| Purpose | Path |
-|---------|------|
-| Main config | `.storybook/main.js` |
-| Preview setup | `.storybook/preview.js` |
-| Decorators | `.storybook/decorators.jsx` |
-| Drupal stubs | `.storybook/stubs/drupal.js`, `once.js` |
-| Global data | `source/00-config/storybook.global-data.yml` |
-| ContentPlaceholder | `source/01-global/content-placeholder/content-placeholder.jsx` |
-| PageWrapper | `source/05-pages/page-wrappers/default.jsx` |
 
 ## Twig Namespaces
 

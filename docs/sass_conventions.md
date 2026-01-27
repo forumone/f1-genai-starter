@@ -91,79 +91,9 @@ $card-border-color: gesso-color(ui, generic, accent);
 
 Location: `source/00-config/mixins/`
 
-Any mixin in that directory can be used when needed. Below are examples of
-some of the most-commonly used mixins. This is not a comprehensive list.
+Any mixin in that directory can and should be used wherever needed.
 
-### Layout and Grid
-
-```scss
-@include css-fixed-grid($columns: 3, $gutter-width: gesso-get-map(gutter-width));
-```
-
-### Buttons and Links
-
-```scss
-@include button();           // Full button styles
-@include text-button();      // Text-only button
-@include link($link, $hover, $active, $visit);
-```
-
-### Focus States
-
-```scss
-@include focus($color: gesso-color(ui, generic, focus), $width: 2px, $offset: 2px);
-```
-
-### Lists
-
-```scss
-@include list-clean();       // Remove list styling
-```
-
-### Accessibility
-
-```scss
-@include visually-hidden();  // Screen reader only
-```
-
-### Typography
-
-```scss
-@include responsive-font-size($font-scale);  // Fluid typography with clamp()
-@include display-text-style($style-name);
-```
-
-### Aspect Ratio
-
-```scss
-@include aspect-ratio($width, $height);
-```
-
-### Images
-
-```scss
-@include image-replace();
-@include svg-background($svg-code);
-@include svg-mask-image($svg-code);
-```
-
-### Responsive Breakpoints
-
-```scss
-@include breakpoint(gesso-breakpoint(desktop)) { }
-@include breakpoint-max(gesso-breakpoint(mobile), true) { }
-@include breakpoint-min-max(gesso-breakpoint(mobile), gesso-breakpoint(tablet), true) { }
-```
-
-### Container Queries
-
-```scss
-@include container-query($width) { }
-@include container-query-max($width) { }
-@include container-query-min-max($min, $max) { }
-```
-
-## Unit Conversion
+### Unit Conversion
 
 **Always** use `rem()` for sizing values:
 
@@ -173,7 +103,20 @@ margin-block-end: rem(16px);
 font-size: rem(gesso-font-size(3));
 ```
 
-Functions: `rem($value)`, `em($value)`, `px($value)`
+### Breakpoint Mixins
+
+Location: `source/00-config/mixins/_breakpoint.scss`
+
+Prefer breakpoint mixins to hard-coding media queries. Prefer using min-width
+queries (mobile first) over max-width queries.
+
+### Typography Mixin
+
+Location: `source/00-config/mixins/_responsive-font-size.scss`
+
+```scss
+@include responsive-font-size($font-scale)  // Fluid typography using clamp()
+```
 
 ## Logical Properties (RTL Support)
 
@@ -209,15 +152,4 @@ $sizes: 0.5, 1, 1.5, 2, 2.5, 3, 4, 5;
     margin-block-end: #{rem(gesso-spacing($size))} !important;
   }
 }
-```
-
-## Config Settings
-
-Available in `source/00-config/_config.settings.scss`:
-
-```scss
-$breakpoints-ems: true !default;      // Convert breakpoints to em
-$container-queries-rems: true !default;
-$support-for-rtl: true !default;      // Enable RTL support
-$wysiwyg: false !default;             // WYSIWYG editor mode
 ```

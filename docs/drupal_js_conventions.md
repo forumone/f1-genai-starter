@@ -28,22 +28,6 @@ Drupal.behaviors.behaviorName = {
 };
 ```
 
-### TypeScript Pattern
-
-```typescript
-import Drupal from 'drupal';
-import once from 'once';
-
-Drupal.behaviors.behaviorName = {
-  attach(context: HTMLElement | Document, settings: Settings) {
-    const elements = once('behavior-id', '.c-component', context) as HTMLElement[];
-    elements.forEach(el => {
-      // Initialize
-    });
-  }
-};
-```
-
 ### Settings Access
 
 Access theme settings via `settings.gesso`:
@@ -52,20 +36,7 @@ Access theme settings via `settings.gesso`:
 const { imagePath, backToTopThreshold } = settings.gesso;
 ```
 
-Available settings interface at `source/@types/drupal/index.d.ts`:
-
-```typescript
-interface GessoSettings {
-  gesso: {
-    backToTopThreshold?: number;
-    backToTopSmoothScroll?: boolean;
-    externalLinkExitDisclaimer?: string;
-    externalLinkAllowedDomains?: string[];
-    externalLinkAllowedLinks?: string[];
-    imagePath?: string;
-  };
-}
-```
+Available settings interface at `source/@types/drupal/index.d.ts`.
 
 ## Module vs Library Files
 
@@ -141,70 +112,13 @@ import MenuItem from './modules/_MenuItem.es6';
 ```
 
 ## Available Utilities
-
-### Slide Animations
-
-Location: `source/06-utility/_slide.es6.js`
-
-```javascript
-slideExpand(target, duration?, easing?, hideContent?)
-slideCollapse(target, duration?, easing?, hideContent?)
-slideToggle(target, duration?, easing?, hideContent?)
-```
-
-- Respects `prefers-reduced-motion`
-- Uses design token values for duration/easing defaults
-- Emits `finishslider` custom event on completion
-
-### Keycodes
-
-Location: `source/00-config/_KEYCODE.es6.js`
-
-```javascript
-import KEYCODE from '../../00-config/_KEYCODE.es6';
-
-if (event.keyCode === KEYCODE.ESC) { }
-if (event.keyCode === KEYCODE.TAB) { }
-```
-
-Constants: `TAB`, `RETURN`, `ESC`, `SPACE`, `END`, `HOME`, `LEFT`, `UP`, `RIGHT`, `DOWN`
-
-### String Utilities
-
-Location: `source/06-utility/_cleanString.es6.js`
-
-```javascript
-import cleanString from '../../06-utility/_cleanString.es6';
-const id = cleanString('My Title'); // 'my-title'
-```
-
-### DOM Utilities
-
-Location: `source/06-utility/_getClosestSibling.es6.js`
-
-```javascript
-import getClosestSibling from '../../06-utility/_getClosestSibling.es6';
-```
+Location: `source/06-utility`
 
 ## TypeScript Configuration
 
 ### Type Definitions
 
 Location: `source/@types/drupal/index.d.ts`
-
-Provides types for:
-- `Drupal` global object
-- `Behavior` interface with `attach` and `detach` methods
-- `Settings` interface including `gesso` namespace
-- SCSS module declarations
-
-### Compiler Options
-
-From `tsconfig.json`:
-- Target: ES2017
-- Module: ESNext
-- JSX: React
-- Strict mode enabled
 
 ## React Components
 
