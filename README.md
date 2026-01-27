@@ -5,6 +5,12 @@ We are in the process of automating this. For now, setting up the starter kit
 is a manual process. Find the type of project you have below and follow the
 instructions.
 
+## Drupal usage
+1. Copy `AGENTS-drupal.md` to the root level of your repo and rename it to `AGENTS.md`
+2. Symlink `AGENTS.md` to `CLAUDE.md`: `ln -s AGENTS.md CLAUDE.md`
+3. Copy the `docs` directory to the root level of your repo
+4. If your site is not using **Gesso 5** as your theme, remove the Gesso theme section from the file.
+
 ## Next.js Usage
 1. Copy `AGENTS-nextjs.md` to the root level of your repo and rename it to `AGENTS.md`
 2. Symlink `AGENTS.md` to `CLAUDE.md`: `ln -s AGENTS.md CLAUDE.md`
