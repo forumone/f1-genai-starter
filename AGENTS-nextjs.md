@@ -65,15 +65,20 @@ npm run build-icons               # Generate React components from SVGs in sourc
 - `util/` - Runtime utility functions
 - `starterkits/` - CMS-specific starter code (Drupal, WordPress)
 
-## React Component Conventions
-Read `docs/react_component_conventions.md` for explanation of React component structure,
+## Reference Material
+**IMPORTANT**: When working on features related to the topics below, ALWAYS read
+the corresponding documentation in docs/ for detailed context, implementation
+patterns, and best practices.
+
+### React Component Conventions
+Reference [docs/react_component_conventions.md](docs/react_component_conventions.md) for explanation of React component structure,
 CSS in components, and TypeScript patterns when working with components.
 
-## CSS Conventions
-Read `docs/css_conventions.md` for explanation of CSS architecture and conventions.
+### CSS Conventions
+Reference [docs/css_conventions.md](docs/css_conventions.md) for explanation of CSS architecture and conventions.
 
-## Storybook Conventions
-Read `docs/storybook_nextjs.md` when creating or changing Storybook stories.
+### Storybook Conventions
+Reference [docs/storybook_nextjs.md](docs/storybook_nextjs.md) when creating or changing Storybook stories.
 
-## Headless CMS Setup
-Read `docs/headless_cms.md` when setting up a headless CMS site.
+### Headless CMS Setup
+Reference [docs/headless_cms.md](docs/headless_cms.md) when setting up a headless CMS site.

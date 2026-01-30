@@ -14,7 +14,6 @@ ddev gesso install                  # Install dependencies
 ddev gesso watch                    # Build, start Storybook (localhost:6006), and watch for changes
 ddev gesso build                    # Production build only (no watch)
 ddev gesso deploy                   # Build Storybook to static directory
-ddev gesso npm run component        # Generate boilerplate for a new component (interactive)
 ddev gesso stylelint                # Lint SCSS files
 ddev gesso eslint                   # Lint JS files
 ```
@@ -40,16 +39,19 @@ Configured in `gesso.info.yml` and `.storybook/main.js`:
 - `@components` → `source/03-components`
 - `@templates` → `source/04-templates`
 
-## Design Tokens
-Read `/docs/design_tokens.md` when you need to work with theme design tokens.
+## Reference Material
+**IMPORTANT**: When working on features related to the topics below, ALWAYS read
+the corresponding documentation in docs/ for detailed context, implementation
+patterns, and best practices.
 
-## Sass Conventions
-Read `/docs/sass_conventions.md` when you need to work with Sass files.
+### Design Tokens
+Reference [docs/design_tokens.md](docs/design-tokens.md) when working with theme design tokens.
 
-## JavaScript Conventions
-Read `/docs/drupal_js_conventions.md` when you need to work with JavaScript or TypeScript.
+### Sass Conventions
+Reference [docs/sass_conventions.md](docs/sass_conventions.md) when working with Sass files.
 
-## Storybook Conventions
-Read `/docs/storybook_drupal.md` when you need to work with Storybook stories.
+### JavaScript Conventions
+Reference [docs/js_conventions.md](docs/js_conventions.md) when working with JavaScript or TypeScript.
 
-
+### Storybook Conventions
+Reference [docs/storybook.md](docs/storybook.md) when working with Storybook stories.

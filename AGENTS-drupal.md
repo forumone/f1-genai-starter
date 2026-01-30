@@ -2,7 +2,8 @@
 
 ## Project Overview
 - Drupal 10
-- Custom theme `gesso` (described in ./docs/gesso_drupal)
+- Custom theme `gesso` (described in [docs/gesso_drupal.md](docs/gesso_drupal.md))
 
-## Gesso Theme
-**Important**: Read `./docs/gesso_drupal` before working in the Gesso custom theme
+## Theme
+**IMPORTANT**: Before doing any work in the Gesso custom theme, you **MUST**
+reference [docs/gesso_drupal.md](docs/gesso_drupal.md).
