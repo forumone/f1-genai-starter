@@ -3,16 +3,25 @@ name: npm-package-updates
 description: Guides through npm package updates including minor/patch updates and major version updates. Use when user wants to update npm dependencies, handle breaking changes, manage package versions, or run npm outdated/update commands.
 ---
 
-# NPM Package Updates
+# npm Package Updates
 
 This skill guides you through the process of updating npm packages in this project, including minor/patch updates and major version updates.
 
 ## Prerequisites
 
-Before starting any package updates, ensure the environment is set up correctly:
+### Check Environment
 
-1. Run `nvm use` to ensure the correct Node version
-2. Run `npm ci` to ensure installed packages match package-lock.json
+Determine if ddev is running:
+
+```bash
+ddev describe 2>/dev/null
+```
+
+- If the command succeeds (exit code 0), prefix every npm command with `ddev gesso`. Example: `npm update --save` becomes `ddev gesso npm update --save`
+- If the command fails, run `nvm use` to ensure the correct Node version
+
+### Install packages
+Run `npm ci` to ensure installed packages match package-lock.json
 
 ## Part 1: Minor and Patch Version Updates
 
@@ -27,16 +36,17 @@ Minor and patch updates follow semantic versioning and should not introduce brea
    This updates packages to their latest minor and patch versions within the semver range specified in package.json.
 
 2. **Fix any issues:**
-   - Address any linting errors (stylelint, eslint)
-   - Fix any formatting issues (prettier)
-   - Resolve TypeScript errors
-   - Update deprecated code patterns
+    - Address any linting errors and warnings (stylelint, eslint)
+    - Address any Sass deprecation warnings if relevant
+    - Fix any formatting issues (prettier)
+    - Resolve TypeScript errors if relevant
+    - Update deprecated code patterns
 
 3. **Test the updates:**
    Run all three test suites to ensure everything still works:
    ```bash
-   npm run build         # Build Next.js application
-   npm run test          # Run linting and TypeScript checks
+   npm run build            # Build application or theme
+   npm run test             # Run linting and TypeScript checks
    npm run build-storybook  # Build Storybook
    ```
 
@@ -59,42 +69,42 @@ Major version updates may introduce breaking changes and require careful review.
    Look for packages where the "Latest" version has a different major version than "Current".
 
 2. **Prioritize and filter updates:**
-   - Skip packages that have dedicated update branches
-   - Skip Node.js version updates if not ready for that version
-   - Prioritize dev dependencies over production dependencies
-   - Start with smaller, less critical packages first
+    - Skip packages that have dedicated update branches
+    - Skip Node.js version updates if not ready for that version
+    - Prioritize dev dependencies over production dependencies
+    - Start with smaller, less critical packages first
 
 3. **Research and summarize ALL major updates:**
 
    For each package with a major update available:
 
    a. **Research breaking changes:**
-     - Search for the package's changelog or release notes
-     - Look for migration guides
-     - Identify specific breaking changes between current and target version
+    - Search for the package's changelog or release notes
+    - Look for migration guides
+    - Identify specific breaking changes between current and target version
 
    b. **Check impact on codebase:**
     - Search for package usage in the codebase
-     - Review how the package is used
-     - Verify if any breaking changes affect the current usage
-     - Example checks:
-       - Removed methods or properties
-       - Changed API signatures
-       - New required configurations
-       - Removed or renamed options
+    - Review how the package is used
+    - Verify if any breaking changes affect the current usage
+    - Example checks:
+        - Removed methods or properties
+        - Changed API signatures
+        - New required configurations
+        - Removed or renamed options
 
    c. **Document findings:**
    Create a summary for each package including:
-     - Package name and version change
-     - List of breaking changes
-     - Impact on codebase (specific files/code that need changes)
-     - Whether it's blocked by issues or safe to proceed
+    - Package name and version change
+    - List of breaking changes
+    - Impact on codebase (specific files/code that need changes)
+    - Whether it's blocked by issues or safe to proceed
 
 4. **Present summary to user and await decision:**
-   - Present all major update summaries in a clear format
-   - Include source links for documentation
-   - Ask the user which updates they want to proceed with
-   - **DO NOT proceed with any major updates until user explicitly approves**
+    - Present all major update summaries in a clear format
+    - Include source links for documentation
+    - Ask the user which updates they want to proceed with
+    - **DO NOT proceed with any major updates until user explicitly approves**
 
 5. **For each approved major update:**
    c. **Update the package:**
@@ -107,7 +117,7 @@ Major version updates may introduce breaking changes and require careful review.
       ```
 
    d. **Test the update:**
-      Run the full test suite:
+   Run the full test suite:
       ```bash
       npm run build
       npm run test
@@ -115,10 +125,10 @@ Major version updates may introduce breaking changes and require careful review.
       ```
 
    d. **Handle failures:**
-     - If tests fail, review the error messages
-     - Check if additional code changes are needed
-     - Rerun tests after fixes
-     - If unable to resolve, roll back and inform user
+    - If tests fail, review the error messages
+    - Check if additional code changes are needed
+    - Rerun tests after fixes
+    - If unable to resolve, roll back and inform user
 
    e. **Commit the update:**
       ```bash
@@ -131,19 +141,19 @@ Major version updates may introduce breaking changes and require careful review.
 All updates must pass these tests before committing:
 
 1. **Next.js Build** (`npm run build`)
-   - Compiles successfully
-   - No build errors
-   - Linting passes
-   - Type checking passes
+    - Compiles successfully
+    - No build errors
+    - Linting passes
+    - Type checking passes
 
 2. **Test Suite** (`npm run test`)
-   - ESLint: No warnings or errors
-   - Stylelint: No CSS linting errors
-   - TypeScript: No type errors
+    - ESLint: No warnings or errors
+    - Stylelint: No CSS linting errors
+    - TypeScript: No type errors
 
 3. **Storybook Build** (`npm run build-storybook`)
-   - Builds successfully
-   - All stories compile
+    - Builds successfully
+    - All stories compile
 
 ## Commit Message Format
 
