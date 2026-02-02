@@ -134,7 +134,7 @@ Use CSS logical properties instead of physical directions:
 
 ## Design Token Access
 
-See `/docs/design-tokens.md` for:
+See `/agent_docs/design-tokens.md` for:
 - Token accessor functions (`gesso-color()`, `gesso-spacing()`, etc.)
 - Breakpoint values
 - Typography tokens

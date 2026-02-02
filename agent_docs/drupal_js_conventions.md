@@ -95,7 +95,7 @@ These are provided by Drupal core at runtime.
 import { TRANSITIONS, BREAKPOINTS, COLORS } from '../../00-config/_GESSO.es6';
 ```
 
-See `/docs/design-tokens.md` for token structure and available exports.
+See `/agent_docs/design-tokens.md` for token structure and available exports.
 
 ### Utility Functions
 
@@ -122,7 +122,7 @@ Location: `source/@types/drupal/index.d.ts`
 
 ## React Components
 
-Read `/docs/drupal_react_conventions.md` if you are working with a React component
+Read `/agent_docs/drupal_react_conventions.md` if you are working with a React component
 within the Drupal theme. (This is uncommon.)
 
 ## Webpack Externals

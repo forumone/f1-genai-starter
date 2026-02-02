@@ -20,7 +20,7 @@ source/03-components/ComponentName/
 - Use `clsx` for conditional class composition
 - Third-party CSS goes in the `vendor` layer: `@import "@package/styles.css" layer(vendor);`
 
-Read `docs/css_conventions.md` when you need a more detailed explanation of CSS in this project.
+Read `agent_docs/css_conventions.md` when you need a more detailed explanation of CSS in this project.
 
 ## TypeScript Patterns
 - Components export named exports with Props types

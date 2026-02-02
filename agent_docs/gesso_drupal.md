@@ -41,17 +41,17 @@ Configured in `gesso.info.yml` and `.storybook/main.js`:
 
 ## Reference Material
 **IMPORTANT**: When working on features related to the topics below, ALWAYS read
-the corresponding documentation in docs/ for detailed context, implementation
+the corresponding documentation in agent_docs/ for detailed context, implementation
 patterns, and best practices.
 
 ### Design Tokens
-Reference [docs/design_tokens.md](docs/design-tokens.md) when working with theme design tokens.
+Reference [agent_docs/design_tokens.md](agent_docs/design-tokens.md) when working with theme design tokens.
 
 ### Sass Conventions
-Reference [docs/sass_conventions.md](docs/sass_conventions.md) when working with Sass files.
+Reference [agent_docs/sass_conventions.md](agent_docs/sass_conventions.md) when working with Sass files.
 
 ### JavaScript Conventions
-Reference [docs/js_conventions.md](docs/js_conventions.md) when working with JavaScript or TypeScript.
+Reference [agent_docs/js_conventions.md](agent_docs/js_conventions.md) when working with JavaScript or TypeScript.
 
 ### Storybook Conventions
-Reference [docs/storybook.md](docs/storybook.md) when working with Storybook stories.
+Reference [agent_docs/storybook.md](agent_docs/storybook.md) when working with Storybook stories.

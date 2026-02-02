@@ -6,15 +6,19 @@ is a manual process. Find the type of project you have below and follow the
 instructions.
 
 ## Drupal usage
-1. Copy `AGENTS-drupal.md` to the root level of your repo and rename it to `AGENTS.md`
-2. Symlink `AGENTS.md` to `CLAUDE.md`: `ln -s AGENTS.md CLAUDE.md`
-3. Copy the `docs` directory to the root level of your repo
-4. If your site is not using **Gesso 5** as your theme, remove the Gesso theme section from the file.
+1. Run this command from the root level of your repo:
+   ```bash
+   curl -o AGENTS.md https://raw.githubusercontent.com/forumone/f1-genai-starter/main/AGENTS-drupal.md && ln -s AGENTS.md CLAUDE.md
+   ```
+2. Copy the `agent_docs` directory to the root level of your repo
+3. If your site is not using **Gesso 5** as your theme, remove the Gesso theme section from the file.
 
 ## Next.js Usage
-1. Copy `AGENTS-nextjs.md` to the root level of your repo and rename it to `AGENTS.md`
-2. Symlink `AGENTS.md` to `CLAUDE.md`: `ln -s AGENTS.md CLAUDE.md`
-3. Copy the `docs` directory to the root level of your repo
+1. Run this command from the root level of your repo:
+   ```bash
+   curl -o AGENTS.md https://raw.githubusercontent.com/forumone/f1-genai-starter/main/AGENTS-nextjs.md && ln -s AGENTS.md CLAUDE.md
+   ```
+2. Copy the `agent_docs` directory to the root level of your repo
 
 ## Adding Skills
 1. If not already present, create `.claude` and `.cursor` directories in the root level of your repo.
