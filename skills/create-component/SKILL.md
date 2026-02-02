@@ -87,7 +87,7 @@ The generated component has a basic props interface:
 interface ComponentNameProps extends GessoComponent {}
 ```
 
-Modify it to include the user-specified props. Read `docs/component_conventions.md`
+Modify it to include the user-specified props. Read `agent_docs/component_conventions.md`
 and follow all patterns specified in that file.
 
 
@@ -110,10 +110,10 @@ import clsx from 'clsx';
 ```
 
 ### 3c. Update CSS Module (component-name.module.css)
-Read `docs/css_conventions.md` and follow all CSS guidelines in that file.
+Read `agent_docs/css_conventions.md` and follow all CSS guidelines in that file.
 
 ### 3d. Update Storybook Files (if created)
-Read `docs/storybook.md` and follow all guidelines in that file.
+Read `agent_docs/storybook.md` and follow all guidelines in that file.
 
 ## Step 4: Handle Figma Reference
 
