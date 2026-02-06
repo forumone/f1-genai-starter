@@ -1,5 +1,5 @@
 ---
-name: nextjs
+name: create-component-nextjs
 description: Creates a new UI component with scaffolding and customization. Use when user wants to add a new component with specific props, types, styling requirements, or Figma reference.
 ---
 

@@ -4,23 +4,22 @@
     "name": "Forum One"
   },
   "metadata": {
-    "description": "Starting documentation and plugins for Forum One",
-    "pluginRoot": "./plugins/"
+    "description": "Starting documentation and plugins for Forum One"
   },
   "plugins": [
     {
       "name": "gesso-upgrader",
-      "source": "gesso-upgrader",
+      "source": "./plugins/gesso-upgrader",
       "tags": ["drupal", "front-end"]
     },
     {
       "name": "create-component",
-      "source": "create-component",
+      "source": "./plugins/create-component",
       "tags": ["nextjs", "front-end"]
     },
     {
       "name": "npm-package-updates",
-      "source": "npm-package-updates",
+      "source": "./plugins/npm-package-updates",
       "tags": ["drupal", "nextjs", "front-end"]
     }
   ]
