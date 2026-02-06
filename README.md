@@ -29,10 +29,28 @@ Find the type of project you have below and follow the instructions.
    degit forumone/f1-genai-starter/agent_docs agent_docs
    ```
 
-## Adding Skills
-1. If not already present, create `.claude` and `.cursor` directories in the root level of your repo.
-2. Add a `skills` directory inside both (so you have `.claude/skills` and `.cursor/skills`)
-3. Copy the directory for any skills you want to add into the `skills` directory for both agents. Note that you need to copy the entire directory with the `SKILLS.md` file, not just the Markdown file.
+## Adding Skills and Subagents
+
+### Claude Code
+1. Add the `f1-genai` marketplace: `/plugin marketplace add forumone/f1-genai-starter`
+2. Install the plugin(s) you want: `/plugin plugin-name@f1-genai`. 
+3. Restart Claude Code
+
+Alternately, after adding the marketplace, you can use `/plugin` command to open
+the plugin manager and browse for or search for a plugin. (You may want to remove
+the default Claude Code plugin marketplace if you're not using it, since it makes
+the list quite long.) See [the Claude Code documentation](https://code.claude.com/docs/en/discover-plugins)
+for the various ways you can install plugins and manage their scope.
+
+**Note**: The documentation indicates that plugin skills are namespaced, so you
+would run them as `/plugin-name:skill-name-here`. However, I found that I could
+use them just like other skills `/skill-name-here`. So if it's not showing up
+one way, try anohter.
+
+### Cursor
+1. If not already present, create a `.cursor` directory in the root level of your repo.
+2. Create a `skills` directory and/or an `agents` inside the `.cursor` directory
+3. Copy any skills or agents you want to use from this repo to the appropriate directory. Note that for skills, you need to copy the entire directory with the `SKILLS.md` file, not just the Markdown file.
 
 ### Available Skills
 - `create-component` (Next.js only) - Creates a new component. (See `Prerequistes` in the skill definition for what you should provide in the prompt). **Requires updated component.js script from nextjs-project**
@@ -40,12 +58,6 @@ Find the type of project you have below and follow the instructions.
 - `upgrade-gesso` (Gesso 5 for Drupal only) - Upgrades a theme to the next Gesso release. **Requires the GitHub CLI to be installed and the GitHub MCP server configured.**
    - `plan-gesso-upgrade` - Skill used by `upgrade-gesso`
    - `implement-gesso-upgrade` - Skill used by `upgrade-gesso`
-
-## Adding Subagents
-1. If not already present, create `.claude` and `.cursor` directories in the root level of your repo.
-2. Add a `agents` directory inside both (so you have `.claude/agents` and `.cursor/agents`)
-3. Copy the Markdown file for any agents you want to add into the `agents` directory for both agents.
-
 ### Available Agents
-- `gesso-upgrade-implementer` - Install if using the `upgrade-gesso` skill with Claude Code
-- `gesso-upgrade-planner` - Install if using the `upgrade-gesso` skill with Claude Code
+- `gesso-upgrade-implementer` - Used with the `upgrade-gesso` skill in Claude Code
+- `gesso-upgrade-planner` - Used with the `upgrade-gesso` skill in Claude Code
