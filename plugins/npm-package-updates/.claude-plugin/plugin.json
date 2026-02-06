@@ -1,0 +1,8 @@
+{
+  "name": "npm-package-updates",
+  "description": "Updates all npm packages",
+  "version": "1.0.0",
+  "author": {
+    "name": "Forum One"
+  }
+}
