@@ -1,0 +1,27 @@
+{
+  "name": "f1-genai",
+  "owner": {
+    "name": "Forum One"
+  },
+  "metadata": {
+    "description": "Starting documentation and plugins for Forum One",
+    "pluginRoot": "./plugins/"
+  },
+  "plugins": [
+    {
+      "name": "gesso-upgrader",
+      "source": "gesso-upgrader",
+      "tags": ["drupal", "front-end"]
+    },
+    {
+      "name": "create-component",
+      "source": "create-component",
+      "tags": ["nextjs", "front-end"]
+    },
+    {
+      "name": "npm-package-updates",
+      "source": "npm-package-updates",
+      "tags": ["drupal", "nextjs", "front-end"]
+    }
+  ]
+}

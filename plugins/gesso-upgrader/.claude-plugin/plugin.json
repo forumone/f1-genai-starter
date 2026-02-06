@@ -1,0 +1,8 @@
+{
+  "name": "upgrade-gesso",
+  "description": "Upgrade Gesso for Drupal to the next minor release",
+  "version": "1.0.0",
+  "author": {
+    "name": "Forum One"
+  }
+}
