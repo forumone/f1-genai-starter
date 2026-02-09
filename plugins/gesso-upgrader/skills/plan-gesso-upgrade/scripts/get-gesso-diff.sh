@@ -2,13 +2,26 @@
 set -euo pipefail
 
 REPO="forumone/gesso"
-PACKAGE_JSON="$(dirname "$0")/package.json"
 
-# Get current version from package.json
-if [[ ! -f "$PACKAGE_JSON" ]]; then
-  echo "Error: package.json not found at $PACKAGE_JSON" >&2
+# Walk up from the current directory to find the nearest package.json that
+# belongs to a Gesso theme (contains "forumone/gesso" or a gesso-related name).
+# This handles both standalone Gesso repos and Gesso nested inside a Drupal site.
+find_gesso_package_json() {
+  local dir="$PWD"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -f "$dir/package.json" ]] && grep -q '"name".*gesso' "$dir/package.json"; then
+      echo "$dir/package.json"
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+  done
+  return 1
+}
+
+PACKAGE_JSON="$(find_gesso_package_json)" || {
+  echo "Error: Could not find a Gesso package.json in any parent directory" >&2
   exit 1
-fi
+}
 
 CURRENT_VERSION=$(grep -o '"version": *"[^"]*"' "$PACKAGE_JSON" | head -1 | grep -o '"[^"]*"$' | tr -d '"')
 
