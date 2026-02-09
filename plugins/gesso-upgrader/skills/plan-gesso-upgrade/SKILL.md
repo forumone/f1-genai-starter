@@ -1,20 +1,25 @@
 ---
 name: plan-gesso-upgrade
 description: Plans update of theme to the next Gesso 5 release
-allowed-tools: Bash(ls:*), WebFetch(domain:raw.githubusercontent.com), Bash(curl:*), Bash(gh release list:*), Bash(gh api:*), mcp__github__list_releases, mcp__github__get_commit, mcp__github__list_commits, mcp__github__get_file_contents
+allowed-tools: Bash(ls:*), Bash(curl:*), Bash(gh api:*), Plan 
 context: fork
 agent: gesso-upgrade-planner
+disable-model-invocation: true
 ---
 Create a plan to update Gesso to the next upstream release. Write the plan to a
 Markdown file.
 
-1. Identify the current Gesso version in `package.json`
-2. Identify the next Gesso release from `forumone/gesso`:
+## 1. Generate the diff
+Run the `get-gesso-diff.sh` script to get the full diff of changes between releases.
    ```bash
-   gh release list -R forumone/gesso -L 10
+   bash ../scripts/get-gesso-diff.sh > ./gesso-upgrade-diff.md
    ```
-3. Examine the diff between the upstream release that matches the current version and the next one
-4. Create a plan to apply all changes in the diff to the current theme
+## 2. Review the diff
+Review the `gesso-upgrade-diff.md` file in full to understand what has changed.
+
+## 3. Create the plan
+Create a plan to apply all changes in the diff to the current theme. The plan 
+will be executed by another subagent.
 
 Your plan should account for:
 - npm package changes
@@ -22,10 +27,12 @@ Your plan should account for:
 - removal of code
 - updating the version number in package.json
 
-If there are any changes in the upstream that cannot be applied cleanly, ask the
-user if they should be included.
+Your plan should also account for other changes in the theme that result from
+the changes in the diff.
+EXAMPLE: A renamed Twig function must be updated in every file that it is used,
+including Twig files that are unique to this theme
 
-If the current Gesso version is not included in the 10 most recent releases,
-ask the user what version number to update to.
+If there are any changes in the diff that you will not implement, explicitly
+note that in the plan.
 
-When finished, report the name of the plan file.
+Write the plan to `./gesso-upgrade-plan.md`.
