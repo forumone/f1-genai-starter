@@ -3,6 +3,12 @@ set -euo pipefail
 
 REPO="forumone/gesso"
 
+# Check for required dependencies
+if ! command -v jq &> /dev/null; then
+  echo "Error: jq is required but not installed. Please install jq to continue." >&2
+  exit 1
+fi
+
 # Walk up from the current directory to find the nearest package.json that
 # belongs to a Gesso theme (contains "forumone/gesso" or a gesso-related name).
 # This handles both standalone Gesso repos and Gesso nested inside a Drupal site.
@@ -33,7 +39,7 @@ fi
 echo "Current theme version: $CURRENT_VERSION"
 
 # Get all releases from GitHub, sorted by semver (newest first)
-RELEASES=$(gh release list --repo "$REPO" --limit 5 --json tagName --jq '.[].tagName')
+RELEASES=$(curl -sf "https://api.github.com/repos/$REPO/releases?per_page=5" | jq -r '.[].tag_name')
 
 if [[ -z "$RELEASES" ]]; then
   echo "Error: Could not fetch releases from $REPO" >&2
@@ -76,6 +82,14 @@ echo ""
 echo "Fetching diff between $CURRENT_VERSION and $NEXT_VERSION..."
 echo "---"
 
-# Use the GitHub compare API via gh to get the diff
-gh api "repos/$REPO/compare/$CURRENT_VERSION...$NEXT_VERSION" \
-  --header "Accept: application/vnd.github.v3.diff"
+# Use the GitHub compare API to get the diff, excluding package-lock.json
+curl -sf -H "Accept: application/vnd.github.v3.diff" \
+  "https://api.github.com/repos/$REPO/compare/$CURRENT_VERSION...$NEXT_VERSION" | \
+  awk '
+    /^diff --git/ {
+      in_package_lock = ($0 ~ /package-lock\.json/)
+      if (!in_package_lock) print
+      next
+    }
+    !in_package_lock { print }
+  '

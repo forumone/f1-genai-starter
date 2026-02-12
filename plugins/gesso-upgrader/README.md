@@ -2,10 +2,6 @@
 
 Upgrade Gesso for Drupal to the next minor release.
 
-## Prerequisites
-You must have the `gh` CLI tool installed. If you do not, first [install it](https://cli.github.com/)
-and [log in to GitHub](https://cli.github.com/manual/).
-
 ## Usage
 The plugin contains skills to plan and implement the plugin.
 
