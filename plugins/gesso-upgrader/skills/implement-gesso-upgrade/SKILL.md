@@ -1,19 +1,23 @@
 ---
 name: implement-gesso-upgrade
 description: Executes update of theme to the next Gesso 5 release
-context: fork
-agent: gesso-upgrade-implementer
 disable-model-invocation: true
 ---
 
 ## Plan
-Review and implement the plan at `./gesso-upgrade-plan.md.` 
+Review and implement the plan at $ARGUMENTS
 
-**IMPORTANT**: If the file does not exist, do not proceed. Wait for the user
-to rerun the skill after creating the file.
+**IMPORTANT**: If the file is not provided or does not exist, do not proceed.
+Prompt the user to provide the plan file to you.
 
 ## Implement
-Create a to-do list to track your progress through each step.
+For each phase of the plan, have a subagent implement that phase of work. Each
+subagent is responsible for only one phase and does not need the entire plan.
+Each subagent should report its success or failure to you upon finishing.
+Subagents should **not** do any testing or validation. You are responsible for
+updating the plan file as each phase is completed and prompting the next subagent.
+When all changes are made and all phases are complete, move on to the next
+section, "Test".
 
 ## Test
 1. Delete the old dependencies: `rm -rf node_modules package-lock.json`
@@ -25,8 +29,5 @@ Create a to-do list to track your progress through each step.
 4. Test theme build: `ddev gesso build`
 5. Test Storybook build: `ddev gesso npm run build-storybook`
 
-**IMPORTANT**: The task is not complete until linting, theme build, and 
+**IMPORTANT**: The task is not complete until linting, theme build, and
 Storybook build complete successfully without errors or warnings.
-
-When work is complete, remind the user to delete the `./gesso-upgrade-plan.md`
-file. Do not delete it yourself! The user may wish to run this task again.

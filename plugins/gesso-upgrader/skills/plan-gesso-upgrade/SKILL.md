@@ -4,16 +4,18 @@ description: Plans update of theme to the next Gesso 5 release
 allowed-tools: Bash(ls:*), Bash(cd:*), Bash(bash scripts/get-gesso-diff.sh), Plan, Write
 disable-model-invocation: true
 ---
-Create a plan to update Gesso to the next upstream release. Write the plan to a
-Markdown file.
+Create a plan to update Gesso to the next upstream release. Write the complete
+plan to one or more Markdown files.
 
 ## 1. Generate the diff
-Run the `get-gesso-diff.sh` script to get the full diff of changes between releases.
-   ```bash
-   bash ../scripts/get-gesso-diff.sh > ./gesso-update-diff.diff
-   ```
+Run the `get-gesso-diff.sh` script to get the full diff of changes between
+releases. Write the output of the script to a `gesso-update-diff.diff` file.
+```bash
+bash ../scripts/get-gesso-diff.sh > gesso-update-diff.diff
+```
+
 ## 2. Review the diff
-Read `./gesso-update-diff.diff` in full to understand what has changed.
+Read `gesso-update-diff.diff` in full to understand what has changed.
 
 The changes may include:
 - npm package version updates
@@ -32,10 +34,11 @@ the changes in the diff.
 EXAMPLE: A renamed Twig function must be updated in every file that it is used,
 including Twig files that are unique to this theme
 
+### Requirements
 1. Group related changes together and break the work into multiple phases.
 2. Write a plan with to-do items for each phase of work to a Markdown file
 3. If there are any changes in the diff that you will not implement, explicitly
-   note that in the plan
+   note that at the top of the plan.
 
 ### What Not to Include
 Do not add or remove npm packages unless they are added, removed, or have
@@ -47,7 +50,7 @@ in the theme, do not create it. Note that change as a change you will not
 implement.
 
 ### Outcome
-When finished, your Markdown files will include all the information another
+When finished, your Markdown files must include all the information another
 agent needs to fully implement the changes.
 
 You **must** tell the user where to find the plan files when finished.
