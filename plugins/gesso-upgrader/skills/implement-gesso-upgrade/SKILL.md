@@ -19,6 +19,11 @@ updating the plan file as each phase is completed and prompting the next subagen
 When all changes are made and all phases are complete, move on to the next
 section, "Test".
 
+If you identify phases of work that can be done in parallel, you may launch
+a team of agents to execute those phases. Each agent is still responsible for
+only one phase. You are still responsible for updating the plan file and
+prompting the agents.
+
 ## Test
 1. Delete the old dependencies: `rm -rf node_modules package-lock.json`
 2. Install the new dependencies: `ddev gesso npm install`
