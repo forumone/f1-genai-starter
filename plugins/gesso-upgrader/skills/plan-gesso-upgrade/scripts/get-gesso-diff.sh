@@ -9,10 +9,12 @@ if ! command -v jq &> /dev/null; then
   exit 1
 fi
 
-# Walk up from the current directory to find the nearest package.json that
-# belongs to a Gesso theme (contains "forumone/gesso" or a gesso-related name).
-# This handles both standalone Gesso repos and Gesso nested inside a Drupal site.
+# Find the package.json that belongs to the Gesso theme.
+# Strategy 1: walk up from $PWD (covers running from inside the theme).
+# Strategy 2: search down from the git root or $PWD (covers running from the
+#             project root, e.g. when invoked via a skill).
 find_gesso_package_json() {
+  # Walk up
   local dir="$PWD"
   while [[ "$dir" != "/" ]]; do
     if [[ -f "$dir/package.json" ]] && grep -q '"name".*gesso' "$dir/package.json"; then
@@ -21,11 +23,24 @@ find_gesso_package_json() {
     fi
     dir="$(dirname "$dir")"
   done
+
+  # Search down from the git root (if available) or $PWD
+  local search_root
+  search_root="$(git -C "$PWD" rev-parse --show-toplevel 2>/dev/null || echo "$PWD")"
+  local found
+  found="$(find "$search_root" -name "package.json" \
+    -not -path "*/node_modules/*" \
+    -exec grep -l '"name".*gesso' {} + 2>/dev/null | head -1)"
+  if [[ -n "$found" ]]; then
+    echo "$found"
+    return 0
+  fi
+
   return 1
 }
 
 PACKAGE_JSON="$(find_gesso_package_json)" || {
-  echo "Error: Could not find a Gesso package.json in any parent directory" >&2
+  echo "Error: Could not find a Gesso package.json in any parent directory or within the project" >&2
   exit 1
 }
 

@@ -10,8 +10,13 @@ plan to one or more Markdown files.
 ## 1. Generate the diff
 Run the `get-gesso-diff.sh` script to get the full diff of changes between
 releases. Write the output of the script to a `gesso-update-diff.diff` file.
+
+The script lives in the `scripts/` directory next to this SKILL.md file. Locate
+this SKILL.md using a glob search for `**/plan-gesso-upgrade/SKILL.md`, then
+derive the script path from that location.
+
 ```bash
-bash ../scripts/get-gesso-diff.sh > gesso-update-diff.diff
+bash path/to/plan-gesso-upgrade/scripts/get-gesso-diff.sh > gesso-update-diff.diff
 ```
 
 ## 2. Review the diff
