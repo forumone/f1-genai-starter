@@ -1,31 +1,61 @@
 ---
 name: plan-gesso-upgrade
 description: Plans update of theme to the next Gesso 5 release
-allowed-tools: Bash(ls:*), WebFetch(domain:raw.githubusercontent.com), Bash(curl:*), Bash(gh release list:*), Bash(gh api:*), mcp__github__list_releases, mcp__github__get_commit, mcp__github__list_commits, mcp__github__get_file_contents
-context: fork
-agent: gesso-upgrade-planner
+allowed-tools: Bash(ls:*), Bash(cd:*), Bash(bash scripts/get-gesso-diff.sh), Plan, Write
+disable-model-invocation: true
 ---
-Create a plan to update Gesso to the next upstream release. Write the plan to a
-Markdown file.
+Create a plan to update Gesso to the next upstream release. Write the complete
+plan to one or more Markdown files.
 
-1. Identify the current Gesso version in `package.json`
-2. Identify the next Gesso release from `forumone/gesso`:
-   ```bash
-   gh release list -R forumone/gesso -L 10
-   ```
-3. Examine the diff between the upstream release that matches the current version and the next one
-4. Create a plan to apply all changes in the diff to the current theme
+## 1. Generate the diff
+Run the `get-gesso-diff.sh` script to get the full diff of changes between
+releases. Write the output of the script to a `gesso-update-diff.diff` file.
 
-Your plan should account for:
-- npm package changes
+The script lives in the `scripts/` directory next to this SKILL.md file. Locate
+this SKILL.md using a glob search for `**/plan-gesso-upgrade/SKILL.md`, then
+derive the script path from that location.
+
+```bash
+bash path/to/plan-gesso-upgrade/scripts/get-gesso-diff.sh > gesso-update-diff.diff
+```
+
+## 2. Review the diff
+Read `gesso-update-diff.diff` in full to understand what has changed.
+
+The changes may include:
+- npm package version updates
+- npm packages installed or removed
 - additions or edits to code
 - removal of code
-- updating the version number in package.json
+- updated version number
 
-If there are any changes in the upstream that cannot be applied cleanly, ask the
-user if they should be included.
+## 3. Create the plan
+Create a plan to apply all changes in the diff to the current theme. The plan
+will be executed by another agent.
 
-If the current Gesso version is not included in the 10 most recent releases,
-ask the user what version number to update to.
+Your plan should also account for other changes in the theme that result from
+the changes in the diff.
 
-When finished, report the name of the plan file.
+EXAMPLE: A renamed Twig function must be updated in every file that it is used,
+including Twig files that are unique to this theme
+
+### Requirements
+1. Group related changes together and break the work into multiple phases.
+2. Write a plan with to-do items for each phase of work to a Markdown file
+3. If there are any changes in the diff that you will not implement, explicitly
+   note that at the top of the plan.
+
+### What Not to Include
+Do not add or remove npm packages unless they are added, removed, or have
+a version number change specifically in the diff. The theme's package.json does
+not have to be identical to the upstream package.json.
+
+If a file was **modified** in the diff, not added, and the file does not exist
+in the theme, do not create it. Note that change as a change you will not
+implement.
+
+### Outcome
+When finished, your Markdown files must include all the information another
+agent needs to fully implement the changes.
+
+You **must** tell the user where to find the plan files when finished.
