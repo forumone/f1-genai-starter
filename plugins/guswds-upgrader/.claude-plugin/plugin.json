@@ -1,0 +1,6 @@
+{
+  "name": "upgrade-guswds",
+  "description": "Upgrade the Gesso USWDS (guswds) theme to the next minor release",
+  "version": "2.0.0",
+  "author": { "name": "Forum One" }
+}
