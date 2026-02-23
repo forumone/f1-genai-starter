@@ -70,15 +70,9 @@ npm run build-icons               # Generate React components from SVGs in sourc
 the corresponding documentation in agent_docs/ for detailed context, implementation
 patterns, and best practices.
 
-### React Component Conventions
-Reference [agent_docs/react_component_conventions.md](agent_docs/react_component_conventions.md) for explanation of React component structure,
-CSS in components, and TypeScript patterns when working with components.
-
-### CSS Conventions
-Reference [agent_docs/css_conventions.md](agent_docs/css_conventions.md) for explanation of CSS architecture and conventions.
-
-### Storybook Conventions
-Reference [agent_docs/storybook_nextjs.md](agent_docs/storybook_nextjs.md) when creating or changing Storybook stories.
-
-### Headless CMS Setup
-Reference [agent_docs/headless_cms.md](agent_docs/headless_cms.md) when setting up a headless CMS site.
+| Topic              | Document                                                                         | Read before...                 |
+|--------------------|----------------------------------------------------------------------------------|--------------------------------|
+| **React**          | [agent_docs/react_component_conventions.md](agent_docs/sass_conventions.md)      | Working with React components  |
+| **CSS**            | [agent_docs/css_conventions_conventions.md](agent_docs/drupal_js_conventions.md) | Writing CSS                    |
+| **Storybook**      | [agent_docs/storybook_nextjs.md](agent_docs/storybook_drupal.md)                 | Creating stories               |
+| **Twig**           | [agent_docs/drupal_twig.md](agent_docs/drupal_twig.md)                           | Setting up a headless CMS Site |

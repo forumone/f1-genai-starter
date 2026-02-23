@@ -13,13 +13,6 @@ source/03-components/ComponentName/
 ```
 
 ## CSS
-- Use CSS Modules (`.module.css` files)
-- Wrap styles in cascade layers matching the source folder: `@layer components { ... }` for `03-components`, `@layer layouts { ... }` for `02-layouts`
-- Import mixins with `@import 'mixins';` at the top only when mixins are used in the CSS file
-- Use CSS custom properties for theming (defined in `00-config/`)
-- Use `clsx` for conditional class composition
-- Third-party CSS goes in the `vendor` layer: `@import "@package/styles.css" layer(vendor);`
-
 Read `agent_docs/css_conventions.md` when you need a more detailed explanation of CSS in this project.
 
 ## TypeScript Patterns

@@ -51,7 +51,6 @@ Full command reference: [agent_docs/drupal_commands.md](agent_docs/drupal_comman
 | **Configuration** | [agent_docs/drupal_config.md](agent_docs/drupal_config.md) | Exporting/importing config |
 | **Custom Modules** | [agent_docs/drupal_custom_modules.md](agent_docs/drupal_custom_modules.md) | Creating or modifying modules |
 | **Patching** | [agent_docs/drupal_patching.md](agent_docs/drupal_patching.md) | Fixing bugs in contrib/core |
-| **Twig** | [agent_docs/drupal_twig.md](agent_docs/drupal_twig.md) | Writing or editing templates |
 | **Troubleshooting** | [agent_docs/drupal_troubleshooting.md](agent_docs/drupal_troubleshooting.md) | Debugging errors |
 | **Testing** | [agent_docs/drupal_testing.md](agent_docs/drupal_testing.md) | Running phpcs, phpstan, phpunit |
 
@@ -64,23 +63,7 @@ Full command reference: [agent_docs/drupal_commands.md](agent_docs/drupal_comman
 | **JavaScript** | [agent_docs/drupal_js_conventions.md](agent_docs/drupal_js_conventions.md) | Writing JS in theme |
 | **Storybook** | [agent_docs/storybook_drupal.md](agent_docs/storybook_drupal.md) | Creating stories |
 | **Design Tokens** | [agent_docs/design_tokens.md](agent_docs/design_tokens.md) | Working with colors, spacing, typography |
-
-<!-- ============================================================
-     PROJECT-SPECIFIC SECTIONS
-     Customize the sections below for your project.
-     ============================================================ -->
-
-## Custom Module Responsibilities
-
-| Module | Primary Responsibility | Documentation |
-|--------|----------------------|---------------|
-| `[module_name]` | Core utilities, shared services | — |
-| `[module_name]` | User management and workflows | `agent_docs/[feature].md` |
-
-### Adding Hooks
-- **Views alterations**: Place in the module responsible for that entity/feature
-- **Form alterations**: Place in the module that owns the form's entity type
-- **Entity hooks**: Place in the module that primarily manages that entity type
+| **Twig** | [agent_docs/drupal_twig.md](agent_docs/drupal_twig.md) | Working with Twig or template fields |
 
 <!--
 ## Architectural Patterns
