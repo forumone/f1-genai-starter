@@ -1,6 +1,7 @@
-# Drupal Commands Reference
-
-Quick reference for common drush and ddev commands.
+---
+title: Drupal Commands Reference
+description: Read when running ddev or drush commands
+---
 
 ## DDEV Environment
 

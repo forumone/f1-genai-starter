@@ -1,4 +1,7 @@
-# JavaScript Conventions
+---
+title: JavaScript Conventions
+description: Read when writing JavaScript or TypeScript
+---
 
 Prefer JavaScript unless editing a TypeScript file or TypeScript is specified.
 
@@ -65,7 +68,7 @@ Drupal.behaviors.dropdownMenu = {
 import { TRANSITIONS, BREAKPOINTS, COLORS } from '../../00-config/_GESSO.es6';
 ```
 
-See `/agent_docs/design-tokens.md` for token structure and available exports.
+See [design-tokens.md](design_tokens.md) for token structure and available exports.
 
 ## Available Utilities
 Location: `source/06-utility`

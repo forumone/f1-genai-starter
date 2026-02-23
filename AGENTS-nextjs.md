@@ -69,10 +69,3 @@ npm run build-icons               # Generate React components from SVGs in sourc
 **IMPORTANT**: When working on features related to the topics below, ALWAYS read
 the corresponding documentation in agent_docs/ for detailed context, implementation
 patterns, and best practices.
-
-| Topic              | Document                                                                         | Read before...                 |
-|--------------------|----------------------------------------------------------------------------------|--------------------------------|
-| **React**          | [agent_docs/react_component_conventions.md](agent_docs/sass_conventions.md)      | Working with React components  |
-| **CSS**            | [agent_docs/css_conventions_conventions.md](agent_docs/drupal_js_conventions.md) | Writing CSS                    |
-| **Storybook**      | [agent_docs/storybook_nextjs.md](agent_docs/storybook_drupal.md)                 | Creating stories               |
-| **Twig**           | [agent_docs/drupal_twig.md](agent_docs/drupal_twig.md)                           | Setting up a headless CMS Site |

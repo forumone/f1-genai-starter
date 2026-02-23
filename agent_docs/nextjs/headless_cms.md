@@ -1,4 +1,7 @@
-# Headless CMS Setup
+---
+title: Headless CMS Setup
+description: Read when told to set up the headless Drupal or headless Wordpress starter kit
+---
 
 ## Drupal
 ```bash

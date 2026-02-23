@@ -1,6 +1,10 @@
-# CSS Conventions
-
-This file provides information about the CSS architecture and usage.
+---
+title: CSS Conventions
+description: Information about CSS architecture and usage specific to Next.js projects
+---
+## CSS Rules
+Read [../shared/front-end/css_rules.md](../shared/front-end/css_rules.md) for CSS
+rules that should be followed across all projects.
 
 ## CSS Architecture
 
@@ -29,18 +33,12 @@ updating components.
 `postcss-advanced-variables` allows for Sass-like mixins. Mixins are located in `source/00-config/mixins/`.
 Project configuration allows shorthand imports: `@import "mixins";` resolves to `/source/00-config/mixins.css`.
 
-### Linting
-**IMPORTANT**: Linting with Stylelint must pass without errors or warnings for any CSS task to be considered complete
-
 ## CSS Styleguide
 ### Class naming
 - Use **kebab-case** for CSS class names, NOT camelCase (even with CSS modules)
   - Example: `.content-type` NOT `.contentType`
 - Variations use `--` between base class name and variant name
   - Example: `.component--variation`
-
-### CSS Rules
-Always use CSS logical properties instead of physical directions.
 
 ### Breakpoints
 Defined in `source/00-config/vars/breakpoints.css` using custom media queries
