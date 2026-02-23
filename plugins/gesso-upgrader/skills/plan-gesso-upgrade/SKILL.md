@@ -7,9 +7,18 @@ disable-model-invocation: true
 Create a plan to update Gesso to the next upstream release. Write the complete
 plan to one or more Markdown files.
 
-## 1. Generate the diff
-Run the `get-gesso-diff.sh` script to get the full diff of changes between
-releases. Write the output of the script to a `gesso-update-diff.diff` file.
+## 1. Determine the theme and generate the diff
+
+**1a. Determine which Gesso theme is installed.**  
+Inspect the theme’s `package.json`. The `name` field identifies the flavor:
+
+- **`"name": "gesso"`** → Gesso (standard). Use the `forumone/gesso` repo for the diff.
+- **`"name": "guswds"`** → Gesso USWDS. Use the `forumone/gesso-uswds` repo for the diff.
+
+**1b. Generate the diff.**  
+Run the `get-gesso-diff.sh` script. It detects the theme from `package.json`
+and fetches the diff from the correct GitHub repo. Write the script output to
+`gesso-update-diff.diff`.
 
 The script lives in the `scripts/` directory next to this SKILL.md file. Locate
 this SKILL.md using a glob search for `**/plan-gesso-upgrade/SKILL.md`, then

@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="forumone/gesso"
-
 # Check for required dependencies
 if ! command -v jq &> /dev/null; then
   echo "Error: jq is required but not installed. Please install jq to continue." >&2
@@ -43,6 +41,19 @@ PACKAGE_JSON="$(find_gesso_package_json)" || {
   echo "Error: Could not find a Gesso package.json in any parent directory or within the project" >&2
   exit 1
 }
+
+PACKAGE_NAME="$(jq -r '.name // empty' "$PACKAGE_JSON")"
+
+if [[ "$PACKAGE_NAME" == "guswds" ]]; then
+  REPO="forumone/gesso-uswds"
+  echo "Detected theme: guswds (Gesso USWDS, repo: $REPO)"
+elif [[ "$PACKAGE_NAME" == "gesso" ]]; then
+  REPO="forumone/gesso"
+  echo "Detected theme: gesso (repo: $REPO)"
+else
+  echo "Error: Unknown Gesso package name in $PACKAGE_JSON: '$PACKAGE_NAME'. Expected 'gesso' or 'guswds'." >&2
+  exit 1
+fi
 
 CURRENT_VERSION=$(grep -o '"version": *"[^"]*"' "$PACKAGE_JSON" | head -1 | grep -o '"[^"]*"$' | tr -d '"')
 
