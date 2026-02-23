@@ -44,14 +44,11 @@ Configured in `gesso.info.yml` and `.storybook/main.js`:
 the corresponding documentation in agent_docs/ for detailed context, implementation
 patterns, and best practices.
 
-### Design Tokens
-Reference [agent_docs/design_tokens.md](agent_docs/design-tokens.md) when working with theme design tokens.
-
-### Sass Conventions
-Reference [agent_docs/sass_conventions.md](agent_docs/sass_conventions.md) when working with Sass files.
-
-### JavaScript Conventions
-Reference [agent_docs/js_conventions.md](agent_docs/js_conventions.md) when working with JavaScript or TypeScript.
-
-### Storybook Conventions
-Reference [agent_docs/storybook.md](agent_docs/storybook.md) when working with Storybook stories.
+| Topic | Document | Read before... |
+|-------|----------|----------------|
+| **Gesso Overview** | [agent_docs/gesso_drupal.md](agent_docs/gesso_drupal.md) | Any theme work |
+| **Sass** | [agent_docs/sass_conventions.md](agent_docs/sass_conventions.md) | Writing SCSS files |
+| **JavaScript** | [agent_docs/drupal_js_conventions.md](agent_docs/drupal_js_conventions.md) | Writing JS in theme |
+| **Storybook** | [agent_docs/storybook_drupal.md](agent_docs/storybook_drupal.md) | Creating stories |
+| **Design Tokens** | [agent_docs/design_tokens.md](agent_docs/design_tokens.md) | Working with colors, spacing, typography |
+| **Twig** | [agent_docs/drupal_twig.md](agent_docs/drupal_twig.md) | Working with Twig or template fields |

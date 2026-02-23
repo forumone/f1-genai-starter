@@ -160,35 +160,3 @@ class CalculatorTest extends UnitTestCase {
 
 }
 ```
-
-## Continuous Integration
-
-### Pre-commit Hook Example
-
-```bash
-#!/bin/bash
-# .git/hooks/pre-commit
-
-# Run phpcs
-ddev exec phpcs web/modules/custom web/themes/custom
-if [ $? -ne 0 ]; then
-  echo "PHPCS failed. Fix errors before committing."
-  exit 1
-fi
-
-# Run phpstan
-ddev exec phpstan analyse web/modules/custom --level 6
-if [ $? -ne 0 ]; then
-  echo "PHPStan failed. Fix errors before committing."
-  exit 1
-fi
-
-exit 0
-```
-
-## IDE Integration
-
-Most IDEs can integrate phpcs and phpstan:
-- Configure phpcs as external tool with Drupal standards
-- Use PHPStan plugin for real-time analysis
-- Set up file watchers for automatic checking
