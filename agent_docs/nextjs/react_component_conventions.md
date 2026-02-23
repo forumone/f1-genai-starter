@@ -1,4 +1,7 @@
-# React Component Conventions
+---
+title: React component conventions
+description: Read when creating a React component in `source`
+---
 
 This file provides information about a React component's file structure.
 

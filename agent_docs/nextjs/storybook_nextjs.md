@@ -1,6 +1,7 @@
-# Storybook in Next.js
-
-This file provides information and guidelines about the Storybook integration with a Next.js site.
+---
+title: Storybook Conventions
+description: Read when creating or editing stories
+---
 
 ## Usage
 Component documentation and visual testing.
@@ -17,26 +18,23 @@ Component documentation and visual testing.
 **componentNameArgs.ts:**
 - Add realistic mock data for props
 
-## Example with variants
+## Story Variations
+
+See [shared Storybook guidelines](../shared/front-end/storybook.md) for the general pattern.
+
+In Next.js stories, variants use the `Story` type and `args` directly:
+
 ```tsx
 const Default: Story = {
-  args: {
-    ...componentNameArgs,
-  },
+  args: { ...componentNameArgs },
 };
 
 const Primary: Story = {
-  args: {
-    ...componentNameArgs,
-    variant: 'primary',
-  },
+  args: { ...componentNameArgs, variant: 'primary' },
 };
 
 const Secondary: Story = {
-  args: {
-    ...componentNameArgs,
-    variant: 'secondary',
-  },
+  args: { ...componentNameArgs, variant: 'secondary' },
 };
 
 export default meta;
