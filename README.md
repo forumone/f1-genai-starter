@@ -11,7 +11,7 @@ Find the type of project you have below and follow the instructions.
 ## Drupal usage
 1. Run this command from the root level of your repo:
    ```bash
-   curl -o AGENTS.md https://raw.githubusercontent.com/forumone/f1-genai-starter/main/AGENTS-drupal.md && ln -s AGENTS.md CLAUDE.md
+   curl -o AGENTS.md https://raw.githubusercontent.com/forumone/f1-genai-starter/main/AGENTS-drupal.md && ln -s AGENTS.md CLAUDE.md && ln -s AGENTS.md GEMINI.md
    ```
 2. Download the `agent_docs` directory to the root level of your repo:
    ```bash
@@ -22,7 +22,7 @@ Find the type of project you have below and follow the instructions.
 ## Next.js Usage
 1. Run this command from the root level of your repo:
    ```bash
-   curl -o AGENTS.md https://raw.githubusercontent.com/forumone/f1-genai-starter/main/AGENTS-nextjs.md && ln -s AGENTS.md CLAUDE.md
+   curl -o AGENTS.md https://raw.githubusercontent.com/forumone/f1-genai-starter/main/AGENTS-nextjs.md && ln -s AGENTS.md CLAUDE.md && ln -s AGENTS.md GEMINI.md
    ```
 2. Download the `agent_docs` directory to the root level of your repo:
    ```bash
@@ -33,7 +33,7 @@ Find the type of project you have below and follow the instructions.
 
 ### Claude Code
 1. Add the `f1-genai` marketplace: `/plugin marketplace add forumone/f1-genai-starter`
-2. Install the plugin(s) you want: `/plugin plugin-name@f1-genai`. 
+2. Install the plugin(s) you want: `/plugin plugin-name@f1-genai`.
 3. Restart Claude Code
 
 Alternately, after adding the marketplace, you can use `/plugin` command to open
