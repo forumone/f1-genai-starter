@@ -15,7 +15,7 @@ find_gesso_package_json() {
   # Walk up
   local dir="$PWD"
   while [[ "$dir" != "/" ]]; do
-    if [[ -f "$dir/package.json" ]] && grep -q '"name".*gesso' "$dir/package.json"; then
+    if [[ -f "$dir/package.json" ]] && grep -qE '"name"[^"]*"(gesso|guswds)"' "$dir/package.json"; then
       echo "$dir/package.json"
       return 0
     fi
@@ -28,7 +28,7 @@ find_gesso_package_json() {
   local found
   found="$(find "$search_root" -name "package.json" \
     -not -path "*/node_modules/*" \
-    -exec grep -l '"name".*gesso' {} + 2>/dev/null | head -1)"
+    -exec grep -lE '"name"[^"]*"(gesso|guswds)"' {} + 2>/dev/null | head -1)"
   if [[ -n "$found" ]]; then
     echo "$found"
     return 0
