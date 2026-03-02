@@ -15,7 +15,7 @@ if [[ "$TYPE" != "nextjs" && "$TYPE" != "drupal" ]]; then
   exit 1
 fi
 
-if [ -d "$DIRECTORY" ]; then
+if [ -d "agent_docs" ]; then
   mkdir -p agent_docs
 else
   read -p "This will replace your existing shared and $TYPE directories. Do you want to continue? " -n 1 -r
