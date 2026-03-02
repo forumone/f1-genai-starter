@@ -7,9 +7,18 @@ disable-model-invocation: true
 Create a plan to update Gesso to the next upstream release. Write the complete
 plan to one or more Markdown files.
 
-## 1. Generate the diff
-Run the `get-gesso-diff.sh` script to get the full diff of changes between
-releases. Write the output of the script to a `gesso-update-diff.diff` file.
+## 1. Determine the theme and generate the diff
+
+**1a. Determine which Gesso theme is installed.**  
+Inspect the theme’s `package.json`. The `name` field identifies the flavor:
+
+- **`"name": "gesso"`** → Gesso (standard). Use the `forumone/gesso` repo for the diff.
+- **`"name": "guswds"`** → Gesso USWDS. Use the `forumone/gesso-uswds` repo for the diff.
+
+**1b. Generate the diff.**  
+Run the `get-gesso-diff.sh` script. It detects the theme from `package.json`
+and fetches the diff from the correct GitHub repo. Write the script output to
+`gesso-update-diff.diff`.
 
 The script lives in the `scripts/` directory next to this SKILL.md file. Locate
 this SKILL.md using a glob search for `**/plan-gesso-upgrade/SKILL.md`, then
@@ -28,6 +37,7 @@ The changes may include:
 - additions or edits to code
 - removal of code
 - updated version number
+- README or documentation updates
 
 ## 3. Create the plan
 Create a plan to apply all changes in the diff to the current theme. The plan
@@ -39,10 +49,17 @@ the changes in the diff.
 EXAMPLE: A renamed Twig function must be updated in every file that it is used,
 including Twig files that are unique to this theme
 
+When the diff includes changes to the upstream README, include in the plan a
+phase or step to update the theme’s README (e.g. `README.md` in the theme
+directory). The plan should specify which sections or information from the
+upstream README to merge or apply, and how to preserve theme-specific content.
+
 ### Requirements
 1. Group related changes together and break the work into multiple phases.
 2. Write a plan with to-do items for each phase of work to a Markdown file
-3. If there are any changes in the diff that you will not implement, explicitly
+3. When the diff includes README changes, include a phase or to-do for updating
+   the theme’s README file.
+4. If there are any changes in the diff that you will not implement, explicitly
    note that at the top of the plan.
 
 ### What Not to Include
