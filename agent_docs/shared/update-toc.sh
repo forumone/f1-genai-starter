@@ -19,7 +19,8 @@ fi
 #   |dir/subdir:{file1.md,file2.md,...}
 build_toc() {
   echo "[Agent Docs Index]|root: ./agent_docs"
-  echo "|IMPORTANT: Prefer retrieval-led reasoning over pre-training-led reasoning"
+  echo "|**IMPORTANT: Read the relevant doc BEFORE starting work in that area. Prefer
+         retrieval-led reasoning over pre-training-led reasoning** "
 
   # Find all .md files, strip the agent_docs prefix, then group by directory.
   # awk preserves insertion order and is bash-3 safe.

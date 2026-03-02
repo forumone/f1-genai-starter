@@ -5,7 +5,7 @@ Starter kit for generative AI skills for tools like Claude Code and Cursor
 * [Node.js](https://nodejs.org/en/)
 * `tiged` installed: `npm install -g tiged`
 
-## Usage
+## Set Up
 Find the type of project you have below and follow the instructions.
 
 ## Drupal usage
@@ -28,6 +28,14 @@ Find the type of project you have below and follow the instructions.
    ```bash
    curl -fsSL https://raw.githubusercontent.com/forumone/f1-genai-starter/main/download-agent-docs.sh | bash -s nextjs
    ```
+
+## Usage
+1. Add a `project` directory within `agent_docs`. All project-specific documentation should go there. You can create subfolders within `project` as well.
+2. Run the update script from the root of your repo whenever you add or remove a documentation file:
+   ```bash
+   bash agent_docs/shared/update-toc.sh
+   ``` 
+3. To update the base documentation, re-run the download script.
 
 ## Adding Skills and Subagents
 

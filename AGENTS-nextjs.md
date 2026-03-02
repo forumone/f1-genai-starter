@@ -64,8 +64,3 @@ npm run build-icons               # Generate React components from SVGs in sourc
 - `lib/` - Build scripts and custom PostCSS plugins
 - `util/` - Runtime utility functions
 - `starterkits/` - CMS-specific starter code (Drupal, WordPress)
-
-## Reference Material
-**IMPORTANT**: When working on features related to the topics below, ALWAYS read
-the corresponding documentation in agent_docs/ for detailed context, implementation
-patterns, and best practices.
