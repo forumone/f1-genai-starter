@@ -5,7 +5,7 @@ Starter kit for generative AI skills for tools like Claude Code and Cursor
 * [Node.js](https://nodejs.org/en/)
 * `tiged` installed: `npm install -g tiged`
 
-## Usage
+## Set Up
 Find the type of project you have below and follow the instructions.
 
 ## Drupal usage
@@ -15,7 +15,7 @@ Find the type of project you have below and follow the instructions.
    ```
 2. Download the `agent_docs` directory to the root level of your repo:
    ```bash
-   degit forumone/f1-genai-starter/agent_docs agent_docs
+   curl -fsSL https://raw.githubusercontent.com/forumone/f1-genai-starter/main/download-agent-docs.sh | bash drupal
    ```
 3. If your site is not using **Gesso 5** as your theme, remove the Gesso theme section from the file.
 
@@ -26,8 +26,16 @@ Find the type of project you have below and follow the instructions.
    ```
 2. Download the `agent_docs` directory to the root level of your repo:
    ```bash
-   degit forumone/f1-genai-starter/agent_docs agent_docs
+   curl -fsSL https://raw.githubusercontent.com/forumone/f1-genai-starter/main/download-agent-docs.sh | bash nextjs
    ```
+
+## Usage
+1. Add a `project` directory within `agent_docs`. All project-specific documentation should go there. You can create subfolders within `project` as well.
+2. Run the update script from the root of your repo whenever you add or remove a documentation file:
+   ```bash
+   bash agent_docs/shared/update-toc.sh
+   ``` 
+3. To update the base documentation, re-run the download script.
 
 ## Adding Skills and Subagents
 
@@ -53,9 +61,9 @@ one way, try anohter.
 3. Copy any skills or agents you want to use from this repo to the appropriate directory. Note that for skills, you need to copy the entire directory with the `SKILLS.md` file, not just the Markdown file.
 
 ### Available Skills
-- `create-component` (Next.js only) - Creates a new component. (See `Prerequistes` in the skill definition for what you should provide in the prompt). **Requires updated component.js script from nextjs-project**
+- `create-component` (Next.js only) - Creates a new component. (See `Prerequisites` in the skill definition for what you should provide in the prompt). **Requires updated component.js script from nextjs-project**
 - `npm-package-updates` (Any Gesso) - Updates npm packages
-- `upgrade-gesso` (Gesso 5 for Drupal only) - Upgrades a theme to the next Gesso release. **Requires the GitHub CLI to be installed and the GitHub MCP server configured.**
+- `upgrade-gesso` (Gesso 5 for Drupal only) - Upgrades a theme to the next Gesso release.
    - `plan-gesso-upgrade` - Skill used by `upgrade-gesso`
    - `implement-gesso-upgrade` - Skill used by `upgrade-gesso`
 ### Available Agents

@@ -1,4 +1,7 @@
-# Drupal Testing & Code Quality
+---
+title: Drupal Testing & Code Quality
+description: Read when running phpcs, phpstan, phpunit
+---
 
 ## Quick Reference
 

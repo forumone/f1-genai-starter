@@ -1,4 +1,7 @@
-# Drupal Custom Modules
+---
+title: Drupal custom modules
+description: Read when creating or modifying modules
+---
 
 ## File Structure
 

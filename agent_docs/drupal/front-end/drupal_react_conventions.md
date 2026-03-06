@@ -1,4 +1,7 @@
-# React Components in Drupal
+---
+title: React Components in Drupal
+description: Read when writing a React component within a Drupal theme.
+---
 
 ## Directory
 

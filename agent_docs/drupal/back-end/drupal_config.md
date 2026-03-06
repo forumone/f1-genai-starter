@@ -1,4 +1,7 @@
-# Drupal Configuration Management
+---
+title: Drupal Configuration Management
+description: Read when exporting/importing config
+---
 
 ## Key Concepts
 

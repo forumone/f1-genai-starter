@@ -1,4 +1,7 @@
-# Storybook Conventions
+---
+title: Storybook Conventions
+description: Read when creating or editing stories
+---
 
 ## Story File Structure
 
@@ -71,8 +74,9 @@ decorators: [withGlobalWrapper],
 
 ## Story Variations
 
-Use CSF 3 and reuse stories with the spread operator. See https://storybook.js.org/docs/api/csf/index#spreadable-story-objects
-for documentation.
+See [shared Storybook guidelines](../shared/front-end/storybook.md) for the general pattern.
+
+In Drupal stories, variants also carry a `render` function:
 
 ```javascript
 const Primary = {

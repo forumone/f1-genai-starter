@@ -1,4 +1,7 @@
-# Drupal Code Style Guidelines
+---
+title: Drupal Code Style
+description: Read when writing PHP code
+---
 
 ## General Rules
 

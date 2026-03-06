@@ -1,4 +1,7 @@
-# Design Tokens
+---
+title: Design Tokens
+description: Read when working with colors, spacing, typography
+---
 
 ## Source of Truth
 

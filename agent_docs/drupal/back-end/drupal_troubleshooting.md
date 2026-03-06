@@ -1,4 +1,7 @@
-# Drupal Troubleshooting
+---
+title: Drupal Troubleshooting
+description: Read when debugging errors
+---
 
 ## Debugging Workflow
 

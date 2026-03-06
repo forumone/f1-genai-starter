@@ -1,4 +1,10 @@
-# Sass Conventions
+---
+title: Sass Conventions
+description: Read when writing SCSS files
+---
+## CSS Rules
+Read [../shared/front-end/css_rules.md](../shared/front-end/css_rules.md) for CSS
+rules that should be followed across all projects.
 
 ## CSS Class Conventions
 
@@ -54,7 +60,3 @@ Location: `source/00-config/mixins/_breakpoint.scss`
 
 Prefer breakpoint mixins to hard-coding media queries. Prefer using min-width
 queries (mobile first) over max-width queries.
-
-## Logical Properties
-
-Always use CSS logical properties instead of physical directions.

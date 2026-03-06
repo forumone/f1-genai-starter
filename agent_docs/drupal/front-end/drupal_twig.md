@@ -1,4 +1,7 @@
-# Drupal Twig Templates
+---
+title: Drupal Twig Templates
+description: Read when working with Twig or Drupal templates
+---
 This document covers Twig patterns **unique to the Gesso theme**. Standard Drupal Twig knowledge is assumed.
 
 ## Two-Layer Template Architecture

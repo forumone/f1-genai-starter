@@ -1,4 +1,7 @@
-# Patching Contrib & Core Modules
+---
+title: Patching Contrib & Core Modules
+description: Read when fixing bugs in contrib/core
+---
 
 ## Critical Rule
 
