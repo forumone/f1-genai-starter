@@ -19,8 +19,7 @@ fi
 #   |dir/subdir:{file1.md,file2.md,...}
 build_toc() {
   echo "[Agent Docs Index]|root: ./agent_docs"
-  echo "|**IMPORTANT: Read the relevant doc BEFORE starting work in that area. Prefer
-         retrieval-led reasoning over pre-training-led reasoning** "
+  echo "|**IMPORTANT: Read the relevant doc BEFORE starting work in that area.** "
 
   # Find all .md files, strip the agent_docs prefix, then group by directory.
   # awk preserves insertion order and is bash-3 safe.
@@ -71,9 +70,9 @@ open(path, 'w').write(result)
 PYEOF
   echo "TOC updated in $AGENTS_MD"
 else
-  # Prepend TOC before existing content.
+  # Append TOC after existing content.
   TMP="$(mktemp)"
-  printf '%s\n\n%s\n' "$NEW_TOC" "$(cat "$AGENTS_MD")" > "$TMP"
+  printf '%s\n\n%s\n' "$(cat "$AGENTS_MD")" "$NEW_TOC" > "$TMP"
   mv "$TMP" "$AGENTS_MD"
   echo "TOC added to $AGENTS_MD"
 fi

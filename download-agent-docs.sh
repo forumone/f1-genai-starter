@@ -16,14 +16,14 @@ if [[ "$TYPE" != "nextjs" && "$TYPE" != "drupal" ]]; then
 fi
 
 if [ -d "agent_docs" ]; then
-  mkdir -p agent_docs
-else
   read -p "This will replace your existing shared and $TYPE directories. Do you want to continue? " -n 1 -r
   echo    # (optional) move to a new line
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
       exit 1
   fi
+else
+    mkdir -p agent_docs
 fi
 
 echo "Downloading agent_docs/shared..."
@@ -31,5 +31,9 @@ npx tiged "$REPO/agent_docs/shared" agent_docs/shared --force
 
 echo "Downloading agent_docs/$TYPE..."
 npx tiged "$REPO/agent_docs/$TYPE" "agent_docs/$TYPE" --force
+
+if [ -f "AGENTS.md" ]; then
+  source "agent_docs/shared/update-toc.sh"
+fi
 
 echo "Done. agent_docs/ is ready."

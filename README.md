@@ -15,7 +15,7 @@ Find the type of project you have below and follow the instructions.
    ```
 2. Download the `agent_docs` directory to the root level of your repo:
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/forumone/f1-genai-starter/main/download-agent-docs.sh | bash -s drupal
+   curl -fsSL https://raw.githubusercontent.com/forumone/f1-genai-starter/main/download-agent-docs.sh | bash drupal
    ```
 3. If your site is not using **Gesso 5** as your theme, remove the Gesso theme section from the file.
 
@@ -26,7 +26,7 @@ Find the type of project you have below and follow the instructions.
    ```
 2. Download the `agent_docs` directory to the root level of your repo:
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/forumone/f1-genai-starter/main/download-agent-docs.sh | bash -s nextjs
+   curl -fsSL https://raw.githubusercontent.com/forumone/f1-genai-starter/main/download-agent-docs.sh | bash nextjs
    ```
 
 ## Usage
