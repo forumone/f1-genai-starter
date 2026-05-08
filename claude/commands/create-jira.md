@@ -61,18 +61,18 @@ Ask in a single message for anything still missing or unclear (e.g., missing ste
 
 ## Step 3: Gather project and sprint
 
-**Project:** Call `mcp__claude_ai_Atlassian__getVisibleJiraProjects` to retrieve the list of accessible projects. Present them to the user and ask which project to use.
+Call `AskUserQuestion` with these two questions together in one call:
 
-**Sprint:** Call `AskUserQuestion` to ask which sprint to assign to:
+**Question 1** — header: "Project key", question: "Which Jira project should this go in?", options:
+- **HHMIDEV** — the main BioInteractive project
+- **Other** — type your project key
+
+**Question 2** — header: "Sprint", question: "Which sprint should this be assigned to?", options:
 - **Active sprint** — assign to the current active sprint
 - **Backlog** — leave unassigned to a sprint
 - **Other** — specify a sprint name or number
 
-If the user selects **Active sprint** or **Other**, use `mcp__claude_ai_Atlassian__fetch` to call the Jira Agile REST API:
-- List boards: `GET /rest/agile/1.0/board?projectKeyOrId=<PROJECT_KEY>`
-- List sprints for a board: `GET /rest/agile/1.0/board/<board_id>/sprint?state=active,future`
-
-Present the results and ask the user to confirm which sprint to use.
+If the user selects **Active sprint** or **Other** and needs sprint details, call `mcp__atlassian__list_agile_boards` to find the board, then `mcp__atlassian__list_sprints_for_board` filtered to active/future sprints. Present the results and ask the user to confirm.
 
 ---
 
@@ -144,28 +144,50 @@ If the user requests changes, apply them and show the updated preview again. Rep
 
 ## Step 6: Create the ticket
 
-Once confirmed, create the ticket using `mcp__claude_ai_Atlassian__createJiraIssue`.
+Once confirmed, create the ticket using `mcp__atlassian__create_jira_issue`.
 
 Pass:
 - `projectKey`: the project key
 - `summary`: the ticket title (keep under 80 characters)
 - `description`: the plain-text description from Step 4
 - `issueType`: `Bug` or `Story`
-- Sprint assignment if applicable — confirm the sprint custom field name for the project (commonly `customfield_10020`)
+- `customFields`: include sprint assignment if applicable (e.g., `{"customfield_10020": <sprint_id>}`)
 
-After creation, note the ticket key (e.g., `PROJ-123`) and proceed immediately to Step 7.
+After creation, note the ticket key (e.g., `HHMIDEV-123`) and proceed immediately to Step 7.
 
 ---
 
 ## Step 7: Transition to "Ready for Development"
 
-After the ticket is created, call `mcp__claude_ai_Atlassian__getTransitionsForJiraIssue` with the new ticket key.
+After the ticket is created, read it back with transitions expanded:
 
-Look for a transition whose `name` matches "Ready for Development" (case-insensitive). If found, call `mcp__claude_ai_Atlassian__transitionJiraIssue` with its ID.
+```
+mcp__atlassian__read_jira_issue(issueKey: "<ticket_key>", expand: "fields,transitions")
+```
 
-**If the transition is not found**, list the available transition names and ask the user which one to use (or whether to skip).
+Look in the `transitions` array for an entry whose `name` matches "Ready for Development" (case-insensitive). Extract its `id`.
 
-After the transition succeeds, display the ticket key, its URL, and confirm the new status.
+**If the transition is found**, execute it via the Jira REST API using Bash:
+
+```bash
+curl -s -X POST \
+  "https://forumone.atlassian.net/rest/api/3/issue/<ticket_key>/transitions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Basic $(echo -n '<email>:<api_token>' | base64)" \
+  -d '{"transition": {"id": "<transition_id>"}}'
+```
+
+Substitute:
+- `<ticket_key>` — the created issue key
+- `<email>` — the user's Atlassian email (ask if unknown)
+- `<api_token>` — the user's Jira API token (ask if unknown; never store it)
+- `<transition_id>` — the ID found in the transitions list
+
+A `204 No Content` response means success.
+
+**If the transition is not found** (workflow differs or name is different), list the available transition names to the user and ask which one to use, then retry with the correct ID.
+
+After the transition succeeds, display the ticket key, URL, and confirm it is now "Ready for Development".
 
 ---
 

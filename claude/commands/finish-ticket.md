@@ -48,8 +48,8 @@ After confirmation:
 Skip this step if `$ARGUMENTS` contains `--no-pr`.
 
 **Gather context:**
-- Call `mcp__claude_ai_Atlassian__getJiraIssue` for the ticket's summary, description, and acceptance criteria.
-- Call `mcp__claude_ai_Atlassian__getAccessibleAtlassianResources` once to get the workspace URL. Build the ticket link as `<workspace-url>/browse/<TICKET-ID>`.
+- Call `mcp__atlassian__read_jira_issue` (or `mcp__claude_ai_Atlassian_Rovo__getJiraIssue` as fallback) for the ticket's summary, description, and acceptance criteria.
+- Call `mcp__claude_ai_Atlassian_Rovo__getAccessibleAtlassianResources` once to get the workspace URL. Build the ticket link as `<workspace-url>/browse/<TICKET-ID>`.
 - Get commit list for the PR body: `git log <base>..HEAD --oneline`.
 
 **Draft the PR:**
@@ -75,11 +75,11 @@ After approval, run `gh pr create --base <base> --title "..." --body "$(cat <<'E
 
 Skip if `$ARGUMENTS` contains `--no-transition`.
 
-- Call `mcp__claude_ai_Atlassian__getTransitionsForJiraIssue` to list available transitions.
+- Call `mcp__claude_ai_Atlassian_Rovo__getTransitionsForJiraIssue` to list available transitions.
 - Find the one matching (case-insensitive): `In Review`, `Code Review`, `Review`, `Ready for Review`, or `In Code Review`. If multiple match, ask which. If none, list all available transitions and ask the user to pick one (or skip).
 - Tell the user: "About to transition `<TICKET-ID>` to `<transition name>`. Proceed?"
-- After confirmation, call `mcp__claude_ai_Atlassian__transitionJiraIssue` with the chosen ID.
-- Then add a comment linking the PR via `mcp__claude_ai_Atlassian__addCommentToJiraIssue`: `"PR opened: <pr-url>"`
+- After confirmation, call `mcp__claude_ai_Atlassian_Rovo__transitionJiraIssue` with the chosen ID.
+- Then add a comment linking the PR via `mcp__claude_ai_Atlassian_Rovo__addCommentToJiraIssue`: `"PR opened: <pr-url>"`
 
 ## 7. Final report
 
